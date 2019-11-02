@@ -1,17 +1,32 @@
 import { Component } from '@angular/core';
+import { IProduct } from './product';
 
 @Component({
     selector: 'pm-products',
-    templateUrl: './product-list.component.html'
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent {
     pageTitle = 'Product List';
     imageWidth = 50;
     imageMargin = 2;
     showImage = false;
-    listFilter = 'cart';
-    
-    products: any[] = [
+    _listFilter: string;
+
+    constructor() {
+        this.listFilter = 'cart';
+        this.filteredProducts = this.products;
+    }
+    public get listFilter(): string {
+      return this._listFilter;
+    }
+
+    public set listFilter(v: string) {
+      this._listFilter = v;
+      this.filteredProducts = this.listFilter ? this.performFiltering(this.listFilter) : this.products;
+    }
+ 
+    products: IProduct[] = [
         {
           "productId": 1,
           "productName": "Leaf Rake",
@@ -64,7 +79,13 @@ export class ProductListComponent {
         }
       ];
 
+      filteredProducts: IProduct[];
       toggleImage(): void {
         this.showImage = !this.showImage;
+      }
+
+      performFiltering(filter: string): IProduct[] {
+        filter = filter.toLowerCase();
+        return this.products.filter((product: IProduct) => product.productName.toLowerCase().indexOf(filter) !== -1);
       }
 }
