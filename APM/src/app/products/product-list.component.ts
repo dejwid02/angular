@@ -3,7 +3,6 @@ import { IProduct } from './product';
 import { ProductService } from './product.service';
 
 @Component({
-    selector: 'pm-products',
     templateUrl: './product-list.component.html',
     styleUrls: ['./product-list.component.css']
 })
@@ -26,11 +25,12 @@ export class ProductListComponent implements OnInit {
        this.productService.getProducts().subscribe({
       next: products => this.products = products,
       error: err => this.errorMessage = err,
-      complete: () => this.filteredProducts = this.products
+      complete: () => {
+                        this.filteredProducts = this.products;
+                        this.filteredProducts = this.products;
+                        this.listFilter = 'cart';
+                      }
        });
-      
-        this.filteredProducts = this.products;
-        this.listFilter = 'cart';
     }
     public get listFilter(): string {
       return this._listFilter;
