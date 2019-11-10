@@ -1,3 +1,5 @@
+using InternetStationsPlayer.DAL;
+using InternetStationsPlayer.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
@@ -21,6 +23,8 @@ namespace InternetStationsPlayer
         {
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
+            services.AddSingleton<IStationsRepository, StationsRepository>();
+            services.AddSingleton<IPlayerService, PlayerService>();
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
