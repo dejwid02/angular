@@ -1,3 +1,273 @@
 [
-{"Url":"http://stream3.polskieradio.pl:8900","Name":"PR1","ImageUrl":"http://www.portalmedialny.pl/media/images/original/md5/e/c/ec4de4217b056cb7a3fb73dd7ce94135/polskie_radio_30.jpg"}
-]
+    {	  "id": 1,
+        "imageUrl":"http://www.portalmedialny.pl/media/images/original/md5/e/c/ec4de4217b056cb7a3fb73dd7ce94135/polskie_radio_30.jpg" ,
+        "url": "http://stream3.polskieradio.pl:8900",
+        "category": "Polskie",
+        "name": "PR1"
+      },
+      {
+        "id": 2,
+        "imageUrl":"http://static.prsa.pl/images/e3c67c19-fdc3-4ab2-909d-6b3ff40c3a3d.jpg" ,
+        "url": "http://stream85.polskieradio.pl/omniaaxe/k16.stream/playlist.m3u8",
+        "category": "Polskie",
+        "name": "Koncerty w 3"
+      },
+      {
+        "id": 3,
+        "imageUrl":"https://ichef.bbci.co.uk/images/ic/640x360/p02lrp2x.jpg" ,
+        "url": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p",
+        "category": "Zagraniczne",
+        "name": "BBC Radio 1"},
+      {
+        "id": 4,
+        "imageUrl":"http://www.bbc.co.uk/staticarchive/10baa75eb508c2fc07f6245cfba0a8b958dab13f.jpg" ,
+        "url": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p",
+        "category": "Zagraniczne",
+        "name": "BBC Radio 2"
+      },
+      {
+        "id": 4,
+        "imageUrl":"https://ichef.bbci.co.uk/images/ic/480xn/p029jbdz.jpg" ,
+        "url": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio3_mf_p",
+        "category": "Zagraniczne",
+        "name": "BBC Radio 3"
+      },
+      {
+        "id": 5,
+        "imageUrl":"http://radio.nadaje.com/media/images/thumbnail/md5/2/9/29823998bb559cd2cb3f15b79c96ceca/bbc6music.jpg" ,
+        "url": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_6music_mf_p",
+        "category": "Zagraniczne",
+        "name": "BBC Radio 6"
+      },
+      {
+        "id": 5,
+        "imageUrl":"https://pbs.twimg.com/profile_images/914261187818344451/OdOTwXdk.jpg" ,
+        "url": "http://stream.resonance.fm:8000/resonance",
+        "category": "Zagraniczne",
+        "name": "ResonanceFM"
+      },
+      {
+        "id": 6,
+        "imageUrl":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Hitradio_%C3%963.svg/1200px-Hitradio_%C3%963.svg.png" ,
+        "url": "http://185.85.29.166:8000",
+        "category": "Zagraniczne",
+        "name": "OE3"
+      },
+      {
+        "id": 7,
+        "imageUrl":"https://www1.wdr.de/radio/startseite/symbolbilder/dummy-logo108~_v-gseagaleriexl.jpg" ,
+        "url": "http://addrad.io/4WRNvc",
+        "category": "Zagraniczne",
+        "name": "WDR2"
+      },
+      {
+        "id": 8,
+        "imageUrl":"https://images-eu.ssl-images-amazon.com/images/I/41i37jMWVqL.png" ,
+        "url": "http://media-ice.musicradio.com:80/ClassicFMMP3",
+        "category": "Klasyczne",
+        "name": "ClassicFM"
+      },
+      {
+        "id": 9,
+        "imageUrl":"https://cdn-radiotime-logos.tunein.com/s107537q.png" ,
+        "url": "http://icepool.silvacast.com/KLASSIK1.mp3",
+        "category": "Klasyczne",
+        "name": "ClassicFM"
+      },
+      {
+        "id": 9,
+        "imageUrl":"https://cdn-radiotime-logos.tunein.com/s107537q.png" ,
+        "url": "http://icepool.silvacast.com/KLASSIK1.mp3",
+        "category": "Klasyczne",
+        "name": "ClassicFM"
+      },
+  
+      {
+        "id": 10,
+        "imageUrl":"https://positivemoney.org/wp-content/uploads/2014/02/bbc-radio-london.png" ,
+        "url": "http://bbcmedia.ic.llnwd.net/stream/bbcmedia_lrldn_mf_p",
+        "category": "Zagraniczne",
+        "name": "BBC London"
+      },
+      {
+        "id": 11,
+        "imageUrl":"http://d38n1wpq60hqoq.cloudfront.net/sites/default/files/radio/logos/logo-radio-trojka.jpg" ,
+        "url": "http://w.dktr.pl:8000/trojka3.ogg",
+        "category": "Polskie",
+        "name": "PR 3"
+      },
+      {
+        "id": 12,
+        "imageUrl":"https://cdn-radiotime-logos.tunein.com/s65945d.png" ,
+        "url": "http://stream4.nadaje.com/muzo",
+        "category": "Polskie",
+        "name": "MuzoFM"
+      },
+      {
+        "id": 13,
+        "imageUrl":"http://radio.nadaje.com/media/images/thumbnail/md5/5/a/5a5b6be93bb503fd627cc61564783fe7/zetchilli.jpg" ,
+        "url": "http://chi-net-02.cdn.eurozet.pl:8900/",
+        "category": "Polskie",
+        "name": "MuzoFM"
+      },
+      {
+        "id": 14,
+        "imageUrl":"http://logo.vtuner.net/007452/330159/logo-1026.png" ,
+        "url": "http://217.113.224.171/RadioLodz-1-HQ-6361726179-web.aac",
+        "category": "Polskie",
+        "name": "Radio Lodz"
+      },
+      {
+        "id": 15,
+        "imageUrl":"http://logo.vtuner.net/007452/330159/logo-5772.png" ,
+        "url": "http://dab.radio.opole.pl:8035/1",
+        "category": "Polskie",
+        "name": "Radio Opole"
+      },
+      {
+        "id": 16,
+        "imageUrl":"http://logo.vtuner.net/007452/330159/logo-32392.png" ,
+        "url": "http://online.radiojasnagora.pl:8000/rjg",
+        "category": "Chrzescijanskie",
+        "name": "Jasna Gora"
+      },
+	   {
+        "id": 17,
+        "imageUrl":"http://www.informatorbrzeski.pl/wp-content/uploads/2012/11/RadioKrakowM-logo.jpg" ,
+        "url": "http://stream4.nadaje.com:9680/radiokrakow-s3",
+        "category": "Polskie",
+        "name": "Radio Krakow"
+      },
+	  {
+        "id": 18,
+        "imageUrl":"https://mamywene.pl/wp-content/uploads/2017/11/radio-gda%C5%84sk-logo.png" ,
+        "url": "http://stream.task.gda.pl:8000/rg2",
+        "category": "Polskie",
+        "name": "Radio Gdansk"
+      },
+	  {
+        "id": 19,
+        "imageUrl":"https://media2.pl/g/750/2832.jpg" ,
+        "url": "http://stream12.polskieradio.pl/pr2/pr2.sdp/playlist.m3u8",
+        "category": "Polskie",
+        "name": "Polskie radio Dwojka"
+      },
+	  {
+        "id": 20,
+        "imageUrl":"https://i1.wp.com/www.franciszkanie.gdansk.pl/wp-content/uploads/2015/02/radioniepokalanow.jpg" ,
+        "url": "http://88.199.169.10:8000/",
+        "category": "Chrzescijanskie",
+        "name": "Radio Niepokalanow"
+      },
+	  {
+        "id": 21,
+        "imageUrl":"https://www.radiowarszawa.com.pl/wp-content/uploads/2016/09/logo_radio_warszawa-300x241.png" ,
+        "url": "http://37.59.53.66:8000/rwarszawa.mp3",
+        "category": "Chrzescijanskie",
+        "name": "Radio Niepokalanow"
+      },
+	  {
+        "id": 22,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://media-the.musicradio.com:80/SmoothLondonMP3",
+        "category": "Zagraniczne",
+        "name": "Radio Niepokalanow"
+      },
+	  {
+        "id": 23,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://www.miastomuzyki.pl/n/rmfmaxxx.pls",
+        "category": "Polskie",
+        "name": "RMF MAXXX"
+      },
+	  {
+        "id": 24,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/wawa",
+        "category": "Polskie",
+        "name": "WAWA"
+      },
+	  {
+        "id": 25,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "https://ch02.cdn.eurozet.pl/CHIPOL.mp3",
+        "category": "Polskie",
+        "name": "CHILLIZET PL"
+      },
+	  {
+        "id": 26,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/wawa-hity",
+        "category": "Polskie",
+        "name": "WAWA hity"
+      },
+	  {
+        "id": 27,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/wawa-szczesliwa-13",
+        "category": "Polskie",
+        "name": "WAWA Szczesliwa 13"
+      },
+	  {
+        "id": 28,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/wawa-disco-polo",
+        "category": "Polskie",
+        "name": "WAWA Disco polo"
+      },
+	  {
+        "id": 29,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://stream.nadaje.com:8054/listen.pls",
+        "category": "Polskie",
+        "name": "Radio RSC"
+      },
+	  {
+        "id": 30,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/eska-goraca-20",
+        "category": "Polskie",
+        "name": "WAWA Disco polo"
+      },
+	  {
+        "id": 31,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/eska-lodz",
+        "category": "Polskie",
+        "name": "ESKA"
+      },
+	  {
+        "id": 32,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/vox-fm",
+        "category": "Polskie",
+        "name": "VOX FM"
+      },
+	  {
+        "id": 33,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/eska-impreska",
+        "category": "Polskie",
+        "name": "ESKA IMPRESKA"
+      },
+	  {
+        "id": 33,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/eska-goraca-100",
+        "category": "Polskie",
+        "name": "ESKA GORACA 100"
+      },
+	  {
+        "id": 34,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://pldm.ml/radio.php?id=-1&url=http://www.eskago.pl/radio/vox-90",
+        "category": "Polskie",
+        "name": "VOX 90"
+      },
+	  {
+        "id": 35,
+        "imageUrl":"http://www.listenradios.com/wp-content/uploads/2012/01/Smooth-Radio-Logo.png" ,
+        "url": "http://www.rmfon.pl/n/rmfclassic.pls",
+        "category": "Polskie",
+        "name": "RMF Classic"
+      }]

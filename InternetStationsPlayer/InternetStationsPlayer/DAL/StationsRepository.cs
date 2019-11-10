@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
 
 namespace InternetStationsPlayer.DAL
 {
@@ -22,12 +22,12 @@ namespace InternetStationsPlayer.DAL
         public IList<Station> GetStations()
         {
             var content = System.IO.File.ReadAllText(GetJsonFilePath());
-            return JsonSerializer.Deserialize<IList<Station>>(content);
+            return JsonConvert.DeserializeObject<IList<Station>>(content);
         }
 
         public void SaveStations(IList<Station> stations)
         {
-            var serialized = JsonSerializer.Serialize(stations);
+            var serialized = JsonConvert.SerializeObject(stations);
             System.IO.File.WriteAllText(GetJsonFilePath(), serialized);
         }
 

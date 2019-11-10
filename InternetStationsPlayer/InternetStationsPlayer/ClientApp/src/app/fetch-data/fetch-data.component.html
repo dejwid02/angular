@@ -7,18 +7,19 @@
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
+      <th>NAme</th>
+      <th>Control</th>
+      <th>Volume</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let forecast of forecasts">
       <td>{{ forecast.name }}</td>
       <td>{{ forecast.url }}</td>
-      <td>{{ forecast.imageUrl }}</td>
-      <td><button (click) ="Play(forecast)">Play</button></td>
+      <td><button (click)="play(forecast)">Play</button>
+      <button (click)="stop()">Stop</button></td>
+      <td><button (click)="volumeUp()">Up</button>
+      <button (click)="volumeDown()">Dn</button></td>
     </tr>
   </tbody>
 </table>
