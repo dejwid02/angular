@@ -37,12 +37,18 @@ namespace InternetStationsPlayer.Services
 
         public void PlayStream(string url)
         {
+            if (process!= null)
+            {
+                Stop();
+            }
             process = System.Diagnostics.Process.Start(playerPath, url);
+
         }
 
         public void Stop()
         {
             process.Kill();
+            process = null;
         }
 
     }

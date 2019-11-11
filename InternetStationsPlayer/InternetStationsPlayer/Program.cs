@@ -18,6 +18,8 @@ namespace InternetStationsPlayer
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+			.UseKestrel()
+			.UseUrls("http://localhost:5000", "http://odin:5000", "http://192.168.1.200:5000")
                 .UseStartup<Startup>();
     }
 }
