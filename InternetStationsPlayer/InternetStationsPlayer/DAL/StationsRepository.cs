@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace InternetStationsPlayer.DAL
 {
@@ -16,7 +17,7 @@ namespace InternetStationsPlayer.DAL
 
         public Station GetStation(int id)
         {
-            return GetStations()[id];
+            return GetStations().First(s=>s.Id==id);
         }
 
         public IList<Station> GetStations()
