@@ -6,15 +6,23 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-    public forecasts: Station[];
+    public stations: Station[];
+    public filteredStations: Station[];
+    public categories: string[];
+    public selectedCategory: string;
     serviceUrl: string;
     playerUrl: string;
+
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.serviceUrl = baseUrl + 'stations';
         this.playerUrl = baseUrl + 'player';
-        http.get<Station[]>(this.serviceUrl).subscribe(result => {
-            this.forecasts = result;
 
+
+        http.get<Station[]>(this.serviceUrl).subscribe(result => {
+            this.stations = result;
+            this.categories = Array.from(new Set(this.stations.map(s => s.category)));
+            this.selectedCategory = this.categories[0];
+            this.filteredStations = this.filterStations(this.selectedCategory);
         }, error => console.error(error));
     }
 
@@ -32,6 +40,15 @@ export class HomeComponent {
     public volumeDown(): void {
         this.http.get(this.playerUrl + "/volumedown").toPromise();
     }
+
+    public selectCategory(category: string): void {
+        this.selectedCategory = category;
+        this.filteredStations = this.filterStations(this.selectedCategory);
+    }
+
+    filterStations(filter: string): Station[] {
+       return this.stations.filter(i => i.category===filter)
+    } 
 }
 
 interface Station {

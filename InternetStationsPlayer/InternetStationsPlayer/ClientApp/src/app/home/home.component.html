@@ -1,25 +1,25 @@
-<p *ngIf="!forecasts"><em>Loading...</em></p>
+<p *ngIf="!filteredStations"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
-  <thead>
-    <tr>
-      <th>NAme</th>
-      <th>Control</th>
-      <th>Volume</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="row" *ngFor="let forecast of forecasts">
-      <td>{{ forecast.name }}</td>
-      <td><img src={{forecast.imageUrl}} alt="rysunek" style="width:200px;" /></td>
-      <td>
-        <button (click)="play(forecast)">Play</button>
-        <button (click)="stop()">Stop</button>
-      </td>
-      <td>
-        <button (click)="volumeUp()">Up</button>
-        <button (click)="volumeDown()">Dn</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label *ngFor="let category of categories" class="btn btn-secondary {{category===selectedCategory ? 'active' : null}}">
+    <input type="radio" name="options" autocomplete="off" [attr.checked]="category===selectedCategory ? '' : null"
+           (click) ="selectCategory(category)"/>
+    {{category}}
+  </label>
+</div>
+
+    <div class="row" *ngFor="let station of filteredStations" style="margin: 5px;" >
+      
+      <img class="col-3" src={{station.imageUrl}} alt="rysunek" />
+      <div class="col">
+        <div class="row">
+          <label class="align-self-center text-body">{{ station.name }}</label>
+        </div>
+        <div class="row mt-auto" style="position:absolute; bottom: 0" >
+          <button class="btn btn-secondary align-self-end" (click)="play(forecast)">Play</button>
+          <button class="btn btn-secondary align-self-bottom" (click)="stop()">Stop</button>
+          <button class="btn btn-secondary align-self-bottom" (click)="volumeUp()">Up</button>
+          <button class="btn btn-secondary align-self-bottom" (click)="volumeDown()">Dn</button>
+        </div>
+        </div>
+      </div>
