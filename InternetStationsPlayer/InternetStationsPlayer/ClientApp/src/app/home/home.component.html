@@ -1,25 +1,25 @@
 <p *ngIf="!filteredStations"><em>Loading...</em></p>
 
 <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
   <label *ngFor="let category of categories" class="btn btn-secondary {{category===selectedCategory ? 'active' : null}}">
     <input type="radio" name="options" autocomplete="off" [attr.checked]="category===selectedCategory ? '' : null"
-           (click) ="selectCategory(category)"/>
+           (click)="selectCategory(category)" />
     {{category}}
   </label>
 </div>
+<div class="row" *ngFor="let station of filteredStations" style="margin: 5px; border: solid 1px;">
 
-    <div class="row" *ngFor="let station of filteredStations" style="margin: 5px;" >
-      
-      <img class="col-3" src={{station.imageUrl}} alt="rysunek" />
-      <div class="col">
-        <div class="row">
-          <label class="align-self-center text-body">{{ station.name }}</label>
-        </div>
-        <div class="row mt-auto" style="position:absolute; bottom: 0" >
-          <button class="btn btn-secondary align-self-end" (click)="play(forecast)">Play</button>
-          <button class="btn btn-secondary align-self-bottom" (click)="stop()">Stop</button>
-          <button class="btn btn-secondary align-self-bottom" (click)="volumeUp()">Up</button>
-          <button class="btn btn-secondary align-self-bottom" (click)="volumeDown()">Dn</button>
-        </div>
-        </div>
-      </div>
+  <img src={{station.imageUrl}} alt="rysunek" style="width: 250px; height: 150px; margin-right: 10px" />
+  <div class="col">
+    <div class="row">
+      <label class="align-self-center text-body">{{ station.name }}</label>
+    </div>
+    <div class="row mt-auto" style="position:absolute; bottom: 0">
+      <button class="btn btn-secondary align-self-end" (click)="play(station)"><i class="fa fa-play"></i></button>
+      <button class="btn btn-secondary align-self-bottom" (click)="stop()"><i class="fa fa-stop"></i></button>
+      <button class="btn btn-secondary align-self-bottom" (click)="volumeUp()"><i class="fa fa-volume-up"></i></button>
+      <button class="btn btn-secondary align-self-bottom" (click)="volumeDown()"><i class="fa fa-volume-down"></i></button>
+    </div>
+  </div>
+</div>
