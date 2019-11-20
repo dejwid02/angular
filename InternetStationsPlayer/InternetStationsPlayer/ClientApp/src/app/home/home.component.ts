@@ -19,7 +19,7 @@ export class HomeComponent {
 
 
         http.get<Station[]>(this.serviceUrl).subscribe(result => {
-            this.stations = result;
+            this.stations = result.sort((a, b)=>a.id-b.id);
             this.categories = Array.from(new Set(this.stations.map(s => s.category)));
             this.selectedCategory = this.categories[0];
             this.filteredStations = this.filterStations(this.selectedCategory);
