@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-    public stations: Station[];
+    public stations: StationsGroup[];
     public filteredStations: Station[];
     public categories: string[];
     public selectedCategory: string;
@@ -14,13 +14,13 @@ export class HomeComponent {
     playerUrl: string;
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-        this.serviceUrl = baseUrl + 'stations';
+        this.serviceUrl = baseUrl + 'groups';
         this.playerUrl = baseUrl + 'player';
 
 
-        http.get<Station[]>(this.serviceUrl).subscribe(result => {
-            this.stations = result.sort((a, b)=>a.id-b.id);
-            this.categories = Array.from(new Set(this.stations.map(s => s.category)));
+        http.get<StationsGroup[]>(this.serviceUrl).subscribe(result => {
+            this.stations = result;
+            this.categories = Array.from(new Set(this.stations.map(s => s.title)));
             this.selectedCategory = this.categories[0];
             this.filteredStations = this.filterStations(this.selectedCategory);
         }, error => console.error(error));
@@ -47,7 +47,7 @@ export class HomeComponent {
     }
 
     filterStations(filter: string): Station[] {
-       return this.stations.filter(i => i.category===filter)
+        return this.stations.filter(i => i.title === filter)[0].stations;
     } 
 }
 
@@ -57,5 +57,12 @@ interface Station {
     imageUrl: string;
     name: string;
     category: string
+
+}
+
+interface StationsGroup {
+    id: number;
+    title: string;
+    stations: Station[];
 
 }

@@ -1,29 +1,29 @@
 <p *ngIf="!filteredStations"><em>Loading...</em></p>
+<div class="container">
+  <div class="row btn-group btn-group-toggle" data-toggle="buttons">
 
-<div class="row btn-group btn-group-toggle" data-toggle="buttons">
-
-  <label *ngFor="let category of categories" class="btn btn-light {{category===selectedCategory ? 'active' : null}}">
-    <input type="radio" name="options" autocomplete="off" [attr.checked]="category===selectedCategory ? '' : null"
-           (click)="selectCategory(category)" />
-    {{category}}
-  </label>
-</div>
-<div class="row" *ngFor="let station of filteredStations" style="margin: 5px; border: solid 1px;">
-  <div class="col">
-    <div class="row">
-      <img src={{station.imageUrl}} alt="rysunek" style="width: 180px; height: 100px; margin-right: 10px" />
-    </div>
-      <div class="row" style="margin-top: 5px; margin-bottom: 5px" >
-      <button class="btn btn-light align-self-end" (click)="play(station)"><i class="fa fa-play"></i></button>
-      <button class="btn btn-light align-self-bottom" (click)="stop()"><i class="fa fa-stop"></i></button>
-      <button class="btn btn-light align-self-bottom" (click)="volumeUp()"><i class="fa fa-volume-up"></i></button>
-      <button class="btn btn-light align-self-bottom" (click)="volumeDown()"><i class="fa fa-volume-down"></i></button>
-    </div>
+    <label *ngFor="let category of categories" class="btn btn-light {{category===selectedCategory ? 'active' : null}}">
+      <input type="radio" name="options" autocomplete="off" [attr.checked]="category===selectedCategory ? '' : null"
+             (click)="selectCategory(category)" />
+      {{category}}
+    </label>
   </div>
-    <div class="col">
-      <div class="row">
-        <label class="align-self-center text-body">{{ station.name }}</label>
+  <div class="row">
+    <div class="card border-light col-lg-4 col-md-6" *ngFor="let station of filteredStations" style="margin: 10px 0px;">
+      <h4 class="card-title text-center">{{ station.name }}</h4>
+      <div class="card card-body text-center border-0">
+        <div class="card-img-top">
+          <img src={{station.imageUrl}} alt="rysunek" style="max-width:200px; margin-right: 10px" />
+        </div>
+        <div class="row no-gutters" style="margin-top: 5px; margin-bottom: 5px">
+          <div class="col justify-content-center">
+            <button class="btn btn-light align-self-end" (click)="play(station)"><i class="fa fa-play"></i></button>
+            <button class="btn btn-light align-self-bottom" (click)="stop()"><i class="fa fa-stop"></i></button>
+            <button class="btn btn-light align-self-bottom" (click)="volumeUp()"><i class="fa fa-volume-up"></i></button>
+            <button class="btn btn-light align-self-bottom" (click)="volumeDown()"><i class="fa fa-volume-down"></i></button>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
+</div>
