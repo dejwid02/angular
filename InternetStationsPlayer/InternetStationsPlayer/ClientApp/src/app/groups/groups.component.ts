@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { StationsGroup } from "../home/StationsGroup";
+import { Component, OnInit, Inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Station } from '../../model/Station';
+import { StationsGroup } from '../../model/StationsGroup';
 
 @Component({
   selector: 'app-groups',
@@ -7,51 +9,41 @@ import { StationsGroup } from "../home/StationsGroup";
   styleUrls: ['./groups.component.css']
 })
 export class GroupsComponent implements OnInit {
-  ngOnInit() {
+    ngOnInit() {
+        this.loadGroups();
   }
 
-    public stations: StationsGroup[];
-    public filteredStations: Station[];
-    public categories: string[];
-    public selectedCategory: string;
+    public groups: StationsGroup[];
+    public title: string
     serviceUrl: string;
     playerUrl: string;
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.serviceUrl = baseUrl + 'groups';
-        this.playerUrl = baseUrl + 'player';
 
-
-        http.get<StationsGroup[]>(this.serviceUrl).subscribe(result => {
-            this.stations = result;
-            this.categories = Array.from(new Set(this.stations.map(s => s.title)));
-            this.selectedCategory = this.categories[0];
-            this.filteredStations = this.filterStations(this.selectedCategory);
+    }
+    public loadGroups(): void {
+        this.http.get<StationsGroup[]>(this.serviceUrl).subscribe(result => {
+            this.groups = result;
         }, error => console.error(error));
     }
 
-    public play(station: Station): void {
-        this.http.get(this.playerUrl + "/play/" + station.id).toPromise();
+    public delete(group: StationsGroup): void {
+        console.log('deleting');
+        this.http.request('delete', this.serviceUrl, { body: group }).subscribe(result => {
+            this.loadGroups();
+        }, error => console.error(error));
     }
-
-    public stop(): void {
-        this.http.get(this.playerUrl + "/stop").toPromise();
+    public create(): void {
+        const newItem: StationsGroup = {
+            id: -1,
+            stations: [],
+            title: this.title
+        }
+        this.http.post(this.serviceUrl, newItem).subscribe(res => {
+            this.loadGroups();
+            this.title = "";
+        });
     }
-
-    public volumeUp(): void {
-        this.http.get(this.playerUrl + "/volumeup").toPromise();
-    }
-    public volumeDown(): void {
-        this.http.get(this.playerUrl + "/volumedown").toPromise();
-    }
-
-    public selectCategory(category: string): void {
-        this.selectedCategory = category;
-        this.filteredStations = this.filterStations(this.selectedCategory);
-    }
-
-    filterStations(filter: string): Station[] {
-        return this.stations.filter(i => i.title === filter)[0].stations;
-    } 
 
 }

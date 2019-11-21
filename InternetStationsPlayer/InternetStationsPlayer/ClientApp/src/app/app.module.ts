@@ -1,3 +1,4 @@
+/// <reference path="../model/station.ts" />
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -9,14 +10,15 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { GroupsComponent } from './groups/groups.component';
-
+import { GroupComponent } from './group/group.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
     GroupsComponent,
-    FetchDataComponent
+        FetchDataComponent,
+        GroupComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -27,8 +29,9 @@ import { GroupsComponent } from './groups/groups.component';
       { path: 'groups', component: GroupsComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
-  ],
+    ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

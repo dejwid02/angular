@@ -24,6 +24,26 @@ namespace InternetStationsPlayer.Controllers
             return Ok(groups);
         }
 
+        [HttpPost]
+        public ActionResult<StationsGroup> AddGroup(StationsGroup group)
+        {
+            var groups = Repository.GetGroups();
+            var id = groups.Max(g => g.Id);
+            group.Id = id + 1;
+            groups.Add(group);
+            Repository.SaveGroups(groups);
+            return Ok(group);
+        }
+
+        [HttpDelete]
+        public ActionResult<IList<StationsGroup>> DeleteGroup(StationsGroup group)
+        {
+            var groups = Repository.GetGroups();
+            groups = groups.Where(g=> g.Id != group.Id).ToList();
+            Repository.SaveGroups(groups);
+            return Ok();
+        }
+
         public IStationsRepository Repository { get; }
     }
 }

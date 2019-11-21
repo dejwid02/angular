@@ -1,8 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Station } from './Station';
-import { StationsGroup } from './StationsGroup';
-
+import { Station } from '../../model/Station';
+import { StationsGroup } from '../../model/StationsGroup';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

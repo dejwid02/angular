@@ -1,4 +1,4 @@
-import { Station } from '../../model/station';
+﻿import { Station } from './Station';
 export interface StationsGroup {
     id: number;
     title: string;

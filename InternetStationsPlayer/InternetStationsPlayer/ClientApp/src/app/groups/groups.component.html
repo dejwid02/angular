@@ -1,12 +1,21 @@
 <div class="container">
   <div class="row" *ngFor="let group of groups">
     <div class="col">
-      <label>{{group.id}}</label>
-      <label>{{group.title}}</label>
+      <label>{{group.id + ' ' + group.title}}</label>
     </div>
     <div class="col">
-      <button class="btn btn-primary">Edit</button>
-      <button class="btn btn-primary">Delete</button>
+      <button class="btn btn-primary" (click)="delete(group)"><i class="fa fa-edit"></i> Edit</button>
+      <button class="btn btn-primary"><i class="fa fa-trash"></i> Delete</button>
     </div>
   </div>
+  <div class="row align-items-center">
+    <div class="col">
+      <label>Title: </label>
+      <input [(ngModel)] ="title"/>
+    </div>
+    <div class="col">
+      <button (click)="create()" class="btn btn-primary"><i class="fa fa-plus"></i> Create group</button>
+    </div>
+  </div>
+
 </div>
