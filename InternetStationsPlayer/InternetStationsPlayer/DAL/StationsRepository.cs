@@ -40,7 +40,7 @@ namespace InternetStationsPlayer.DAL
 
             foreach (var group in groups)
             {
-                group.Stations = group.Stations.Select(s => stations.Single(s2 => s2.Id == s.Id)).ToList();
+                group.Stations = group.Stations.Select(s => stations.First(s2 => s2.Id == s.Id)).ToList();
 
             }
             return groups;

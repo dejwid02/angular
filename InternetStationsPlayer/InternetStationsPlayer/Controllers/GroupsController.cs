@@ -35,6 +35,17 @@ namespace InternetStationsPlayer.Controllers
             return Ok(group);
         }
 
+        [HttpPut]
+        public ActionResult<StationsGroup> ModifyGroup(StationsGroup group)
+        {
+            var groups = Repository.GetGroups();
+            var existingGroup = groups.Single(g => g.Id == group.Id);
+            existingGroup.Title = group.Title;
+            existingGroup.Stations = group.Stations;
+            Repository.SaveGroups(groups);
+            return Ok(group);
+        }
+
         [HttpDelete]
         public ActionResult<IList<StationsGroup>> DeleteGroup(StationsGroup group)
         {

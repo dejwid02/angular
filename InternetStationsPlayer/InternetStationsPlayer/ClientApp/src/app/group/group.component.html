@@ -1,1 +1,58 @@
-<p>group works!</p>
+<div class="container">
+  <div class="row">
+    <div class="card col-md-6">
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <h4 class="card-title">{{group.title}}</h4>
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-primary" (click)="save()"><i class="fa fa-save"></i></button>
+            <button class="btn btn-primary" (click)="undo()"><i class="fa fa-undo"></i></button>
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let station of group.stations">
+            <div class="row">
+              <div class="col">
+                <label>{{station.name}}</label>
+              </div>
+              <div class="col-1">
+                <button class="btn btn-secondary" (click) ="removeStation(station)"><i class="fa fa-minus"></i></button>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+
+      </div>
+    </div>
+
+
+
+    <div class="card col-md-6">
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <h4 class="card-title">Available stations</h4>
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let station of availableStations">
+            <div class="row">
+              <div class="col">
+                <label>{{station.name}}</label>
+              </div>
+              <div class="col-1">
+                <button class="btn btn-secondary" (click) ="addStation(station)"><i class="fa fa-plus"></i></button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

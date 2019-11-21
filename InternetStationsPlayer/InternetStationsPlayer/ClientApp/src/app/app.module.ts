@@ -25,8 +25,9 @@ import { GroupComponent } from './group/group.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'groups', component: GroupsComponent },
+        { path: '', component: HomeComponent, pathMatch: 'full' },
+        { path: 'groups/:id', component: GroupComponent },
+        { path: 'groups', component: GroupsComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
     ],
