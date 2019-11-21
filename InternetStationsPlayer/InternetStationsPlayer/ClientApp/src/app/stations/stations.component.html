@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <h4 class="card-title">Available stations</h4>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-primary" (click)="newStation()"><i class="fa fa-plus"></i></button>
+      </div>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let station of stations">
+        <div class="row">
+          <div class="col">
+            <label>{{station.name}}</label>
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-secondary" [routerLink]="['/stations', station.id]"><i class="fa fa-edit"></i></button>
+            <button class="btn btn-secondary" (click)="delete(station)"><i class="fa fa-trash"></i></button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -37,10 +37,35 @@ namespace InternetStationsPlayer.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<Station> Create(Station station)
+        public ActionResult<Station> Create(Station station)
         {
             var stations = repository.GetStations();
+            var id = stations.Max(s => s.Id);
+            station.Id = id + 1;
             stations.Add(station);
+            repository.SaveStations(stations);
+            return Ok(station);
+        }
+
+        [HttpDelete]
+        public ActionResult<IList<Station>> DeleteGroup(Station station)
+        {
+            var stations = repository.GetStations();
+            stations = stations.Where(g => g.Id != station.Id).ToList();
+            repository.SaveStations(stations);
+            return Ok();
+        }
+
+        [HttpPut]
+        public IEnumerable<Station> Update(Station station)
+        {
+            var stations = repository.GetStations();
+            var existingStation = stations.First(s=>s.Id==station.Id);
+
+            existingStation.ImageUrl = station.ImageUrl;
+            existingStation.Name = station.Name;
+            existingStation.Url = station.Url;
+            
             repository.SaveStations(stations);
             return stations;
         }

@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { GroupsComponent } from './groups/groups.component';
 import { GroupComponent } from './group/group.component';
+import { StationsComponent } from './stations/stations.component';
+import { StationDetailsComponent } from './station-details/station-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +21,8 @@ import { GroupComponent } from './group/group.component';
     GroupsComponent,
         FetchDataComponent,
         GroupComponent,
+        StationsComponent,
+        StationDetailsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,6 +32,8 @@ import { GroupComponent } from './group/group.component';
         { path: '', component: HomeComponent, pathMatch: 'full' },
         { path: 'groups/:id', component: GroupComponent },
         { path: 'groups', component: GroupsComponent },
+        { path: 'stations/:id', component: StationDetailsComponent },
+        { path: 'stations', component: StationsComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
     ],
