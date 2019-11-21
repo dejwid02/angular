@@ -51,6 +51,24 @@ export class GroupComponent implements OnInit {
         this.updateAvailableStations();
     }
 
+    moveUp(station: Station) {
+        var index = this.group.stations.indexOf(station);
+        if (index > 0) {
+            let prevItem: Station = this.group.stations[index - 1];
+            this.group.stations[index - 1] = station;
+            this.group.stations[index] = prevItem;
+        }
+    }
+
+    moveDown(station: Station) {
+        var index = this.group.stations.indexOf(station);
+        if (index < this.group.stations.length-1) {
+            let nextItem: Station = this.group.stations[index + 1];
+            this.group.stations[index + 1] = station;
+            this.group.stations[index] = nextItem;
+        }
+    }
+
     save() : void{
         this.http.put(this.serviceUrl, this.group).subscribe(result => { })
         this.router.navigate(['']);

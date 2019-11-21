@@ -5,7 +5,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h4 class="card-title">{{group.title}}</h4>
+            <input class="form-control" [(ngModel)]="group.title"/>
           </div>
           <div class="col-auto">
             <button class="btn btn-primary" (click)="save()"><i class="fa fa-save"></i></button>
@@ -18,8 +18,10 @@
               <div class="col">
                 <label>{{station.name}}</label>
               </div>
-              <div class="col-1">
-                <button class="btn btn-secondary" (click) ="removeStation(station)"><i class="fa fa-minus"></i></button>
+              <div class="col-auto">
+                <button class="btn btn-secondary" (click)="removeStation(station)"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-secondary" (click)="moveUp(station)"><i class="fa fa-arrow-up"></i></button>
+                <button class="btn btn-secondary" (click)="moveDown(station)"><i class="fa fa-arrow-down"></i></button>
               </div>
             </div>
           </li>
