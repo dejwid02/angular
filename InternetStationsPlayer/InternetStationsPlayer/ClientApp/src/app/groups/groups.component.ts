@@ -1,13 +1,15 @@
-import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Station } from './Station';
-import { StationsGroup } from './StationsGroup';
+import { Component, OnInit } from '@angular/core';
+import { StationsGroup } from "../home/StationsGroup";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+  selector: 'app-groups',
+  templateUrl: './groups.component.html',
+  styleUrls: ['./groups.component.css']
 })
-export class HomeComponent {
+export class GroupsComponent implements OnInit {
+  ngOnInit() {
+  }
+
     public stations: StationsGroup[];
     public filteredStations: Station[];
     public categories: string[];
@@ -51,5 +53,5 @@ export class HomeComponent {
     filterStations(filter: string): Station[] {
         return this.stations.filter(i => i.title === filter)[0].stations;
     } 
-}
 
+}
