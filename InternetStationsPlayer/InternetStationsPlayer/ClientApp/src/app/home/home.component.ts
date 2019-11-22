@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Station } from '../../model/Station';
 import { StationsGroup } from '../../model/StationsGroup';
+import { Usage } from '../../model/Usage';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,26 +10,45 @@ import { StationsGroup } from '../../model/StationsGroup';
 export class HomeComponent {
     public stations: StationsGroup[];
     public filteredStations: Station[];
+    public usages: Usage[];
     public categories: string[];
     public selectedCategory: string;
     serviceUrl: string;
     playerUrl: string;
-
+    usageUrl: string;
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.serviceUrl = baseUrl + 'groups';
         this.playerUrl = baseUrl + 'player';
-
+        this.usageUrl = baseUrl + 'usage';
 
         http.get<StationsGroup[]>(this.serviceUrl).subscribe(result => {
             this.stations = result;
-            this.categories = Array.from(new Set(this.stations.map(s => s.title)));
-            this.selectedCategory = this.categories[0];
-            this.filteredStations = this.filterStations(this.selectedCategory);
+            this.buildGroups();
         }, error => console.error(error));
+
+        http.get<Usage[]>(this.usageUrl).subscribe(result => {
+            this.usages = result;
+            this.buildGroups();
+        }, error => console.error(error));
+    }
+
+    private buildGroups() {
+        if (this.usages) {
+            let group: StationsGroup = {
+                title: "Popularne",
+                id: -1,
+                stations: this.usages.sort((a, b) => b.noOfTimesPlayed - a.noOfTimesPlayed).map(u => u.station)
+            };
+            this.stations.splice(0, 0, group);
+        }
+        this.categories = Array.from(new Set(this.stations.map(s => s.title)));
+        this.selectedCategory = this.categories[0];
+        this.filteredStations = this.filterStations(this.selectedCategory);
     }
 
     public play(station: Station): void {
         this.http.get(this.playerUrl + "/play/" + station.id).toPromise();
+        this.http.put(this.usageUrl, station).toPromise();
     }
 
     public stop(): void {

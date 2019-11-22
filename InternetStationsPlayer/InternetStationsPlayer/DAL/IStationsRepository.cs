@@ -12,5 +12,7 @@ namespace InternetStationsPlayer.DAL
         void SaveStations(IList<Station> stations);
         void SaveGroups(IList<StationsGroup> groups);
         IList<StationsGroup> GetGroups();
+        IList<Usage> GetUsages();
+        void SaveUsages(IList<Usage> usages);
     }
 }

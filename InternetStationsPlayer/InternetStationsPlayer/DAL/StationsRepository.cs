@@ -66,5 +66,32 @@ namespace InternetStationsPlayer.DAL
 
         private string GetStationsJsonFilePath() => Path.Combine(hostingEnvironment.ContentRootPath, "stations.json");
         private string GetStationsGroupsFilePath() => Path.Combine(hostingEnvironment.ContentRootPath, "groups.json");
+        private string GetUsagesFilePath() => Path.Combine(hostingEnvironment.ContentRootPath, "usages.json");
+        public IList<Usage> GetUsages()
+        {
+            var content = System.IO.File.ReadAllText(GetStationsJsonFilePath());
+            var stations = JsonConvert.DeserializeObject<IList<Station>>(content);
+
+            var usagesContent = System.IO.File.ReadAllText(GetUsagesFilePath());
+            var usages = JsonConvert.DeserializeObject<IList<Usage>>(usagesContent);
+
+            foreach (var usage in usages)
+            {
+                usage.Station = stations.First(s => s.Id == usage.Station.Id);
+
+            }
+            return usages;
+        }
+
+        public void SaveUsages(IList<Usage> usages)
+        {
+
+            foreach (var usage in usages)
+            {
+                usage.Station = new Station() { Id = usage.Station.Id };
+            }
+            var serialized = JsonConvert.SerializeObject(usages);
+            System.IO.File.WriteAllText(GetUsagesFilePath(), serialized);
+        }
     }
 }
