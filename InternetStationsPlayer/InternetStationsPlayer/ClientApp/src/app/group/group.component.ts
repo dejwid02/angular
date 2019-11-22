@@ -14,12 +14,8 @@ export class GroupComponent implements OnInit {
     constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, @Inject('BASE_URL') baseUrl: string) {
         this.serviceUrl = baseUrl + 'groups';
         this.stationsUrl = baseUrl + 'stations';
-    }
 
-      
-
-    ngOnInit() {
-            this.id = +this.route.snapshot.paramMap.get('id');
+        this.id = +this.route.snapshot.paramMap.get('id');
 
         this.http.get<StationsGroup[]>(this.serviceUrl).subscribe(result => {
             this.group = result.filter(g => g.id == this.id)[0];
@@ -29,6 +25,12 @@ export class GroupComponent implements OnInit {
             this.allStations = result;
             this.updateAvailableStations();
         }, error => console.error(error));
+    }
+
+      
+
+    ngOnInit() {
+           
         
   }
     public group: StationsGroup;

@@ -21,18 +21,21 @@ export class HomeComponent {
         this.playerUrl = baseUrl + 'player';
         this.usageUrl = baseUrl + 'usage';
 
-        http.get<StationsGroup[]>(this.serviceUrl).subscribe(result => {
-            this.stations = result;
-            this.buildGroups();
-        }, error => console.error(error));
+        this.loadData(true);
+    }
 
-        http.get<Usage[]>(this.usageUrl).subscribe(result => {
+    private loadData(selectFirst: boolean) {
+        this.http.get<StationsGroup[]>(this.serviceUrl).subscribe(result => {
+            this.stations = result;
+            this.buildGroups(selectFirst);
+        }, error => console.error(error));
+        this.http.get<Usage[]>(this.usageUrl).subscribe(result => {
             this.usages = result;
-            this.buildGroups();
+            this.buildGroups(selectFirst);
         }, error => console.error(error));
     }
 
-    private buildGroups() {
+    public buildGroups(selectFist: boolean) {
         if (this.usages) {
             let group: StationsGroup = {
                 title: "Popularne",
@@ -42,8 +45,10 @@ export class HomeComponent {
             this.stations.splice(0, 0, group);
         }
         this.categories = Array.from(new Set(this.stations.map(s => s.title)));
-        this.selectedCategory = this.categories[0];
-        this.filteredStations = this.filterStations(this.selectedCategory);
+        if (selectFist) {
+            this.selectedCategory = this.categories[0];
+            this.filteredStations = this.filterStations(this.selectedCategory);
+        }
     }
 
     public play(station: Station): void {
@@ -63,6 +68,7 @@ export class HomeComponent {
     }
 
     public selectCategory(category: string): void {
+        this.loadData(false);
         this.selectedCategory = category;
         this.filteredStations = this.filterStations(this.selectedCategory);
     }
