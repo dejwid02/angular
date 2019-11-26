@@ -3,6 +3,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Station } from '../../model/Station';
 import { StationsGroup } from '../../model/StationsGroup';
+import { Observable } from 'rxjs';
+import { forkJoin } from 'rxjs'
 
 @Component({
   selector: 'app-group',
@@ -17,14 +19,15 @@ export class GroupComponent implements OnInit {
 
         this.id = +this.route.snapshot.paramMap.get('id');
 
-        this.http.get<StationsGroup[]>(this.serviceUrl).subscribe(result => {
-            this.group = result.filter(g => g.id == this.id)[0];
-        }, error => console.error(error));
+        let groupsResponce = this.http.get<StationsGroup[]>(this.serviceUrl);
+        let stattionsResponce = this.http.get<Station[]>(this.stationsUrl);
 
-        this.http.get<Station[]>(this.stationsUrl).subscribe(result => {
-            this.allStations = result;
-            this.updateAvailableStations();
+        forkJoin(groupsResponce, stattionsResponce).subscribe(responces => {
+            this.group = responces[0].filter(g => g.id == this.id)[0];
+            this.allStations = responces[1];
+            this.updateAvailableStations()
         }, error => console.error(error));
+       
     }
 
       
