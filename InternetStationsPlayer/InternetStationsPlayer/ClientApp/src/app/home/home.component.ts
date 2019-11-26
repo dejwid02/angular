@@ -1,11 +1,13 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable, from, forkJoin } from 'rxjs';
+import { toArray, map, distinct } from 'rxjs/operators';
 import { Station } from '../../model/Station';
 import { StationsGroup } from '../../model/StationsGroup';
 import { Usage } from '../../model/Usage';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
+    selector: 'app-home',
+    templateUrl: './home.component.html',
 })
 export class HomeComponent {
     public stations: StationsGroup[];
@@ -25,26 +27,32 @@ export class HomeComponent {
     }
 
     private loadData(selectFirst: boolean) {
-        this.http.get<StationsGroup[]>(this.serviceUrl).subscribe(result => {
-            this.stations = result;
+        let groupsResponce = this.http.get<StationsGroup[]>(this.serviceUrl);
+        let usagesResponce = this.http.get<Usage[]>(this.usageUrl);
+
+        forkJoin(groupsResponce, usagesResponce).subscribe(responces => {
+            this.stations = responces[0];
+            this.usages = responces[1];
             this.buildGroups(selectFirst);
         }, error => console.error(error));
-        this.http.get<Usage[]>(this.usageUrl).subscribe(result => {
-            this.usages = result;
-            this.buildGroups(selectFirst);
-        }, error => console.error(error));
+
     }
 
     public buildGroups(selectFist: boolean) {
-        if (this.usages) {
-            let group: StationsGroup = {
-                title: "Popularne",
-                id: -1,
-                stations: this.usages.sort((a, b) => b.noOfTimesPlayed - a.noOfTimesPlayed).map(u => u.station)
-            };
-            this.stations.splice(0, 0, group);
-        }
-        this.categories = Array.from(new Set(this.stations.map(s => s.title)));
+
+        let group: StationsGroup = {
+            title: "Popularne",
+            id: -1,
+            stations: this.usages.sort((a, b) => b.noOfTimesPlayed - a.noOfTimesPlayed).map(u => u.station)
+        };
+        this.stations.splice(0, 0, group);
+
+        let stations$ = from(this.stations);
+
+        stations$.pipe(
+            map(s => s.title),
+            distinct(),
+            toArray()).subscribe(categories => this.categories = categories)
         if (selectFist) {
             this.selectedCategory = this.categories[0];
             this.filteredStations = this.filterStations(this.selectedCategory);
@@ -75,6 +83,6 @@ export class HomeComponent {
 
     filterStations(filter: string): Station[] {
         return this.stations.filter(i => i.title === filter)[0].stations;
-    } 
+    }
 }
 
