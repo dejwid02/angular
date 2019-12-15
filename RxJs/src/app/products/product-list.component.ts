@@ -15,7 +15,7 @@ export class ProductListComponent implements OnInit {
   errorMessage = '';
   categories;
 
-  products$  = this.productService.products$
+  products$  = this.productService.productsWithCategory$
                     .pipe(catchError(err => {
                            this.errorMessage = err;
                            return EMPTY; }));
