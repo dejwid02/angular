@@ -5,7 +5,10 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 export function getBaseUrl() {
-  return document.getElementsByTagName('base')[0].href.replace('4200', '5000');
+  const url = document.getElementsByTagName('base')[0].href;
+  const endIndex = url.lastIndexOf(':') + 1;
+  const baseUrl = url.substring(0, endIndex) + '5000/';
+  return baseUrl;
 }
 
 const providers = [
