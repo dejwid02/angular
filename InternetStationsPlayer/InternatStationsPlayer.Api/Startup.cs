@@ -40,8 +40,9 @@ namespace InternatStationsPlayer.Api
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors(
-       options => options.WithOrigins("*").AllowAnyMethod()
+       options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()
    );
+
             app.UseRouting();
 
             app.UseAuthorization();
